@@ -1,9 +1,10 @@
 <template>
   <Form>
     <Field
+      class="form-control"
       name="email"
       type="email"
-      rules="required|email"
+      placeHolder="示範局部匯入而已, 無驗證功能"
     />
     <ErrorMessage name="email"/>
   </Form>

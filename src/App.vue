@@ -1,8 +1,11 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link>
+    <router-link to="/">demo1</router-link>
   </nav>
-  <router-view />
+
+  <main class="container p-3">
+    <router-view />
+  </main>
 </template>
 
 <style lang="scss">
