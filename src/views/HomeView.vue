@@ -1,15 +1,9 @@
 <template>
-  <VForm>
-    <VField
-      name="email"
-      type="email"
-      rules="required|email"
-    />
-    <ErrorMessage name="email"/>
-  </VForm>
+  <Form></Form>
 </template>
 
 <script setup>
+import Form from '@/components/Form.vue'
 </script>
 
 <style lang='scss' scope>
