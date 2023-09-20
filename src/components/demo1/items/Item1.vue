@@ -2,7 +2,7 @@
   <Form v-slot="{ errors }">
     <Field
       class="form-control"
-      id="item1"
+      :id="`item${idx}`"
       name="輸入框"
       type="text"
       rules="alpha"
@@ -17,11 +17,15 @@
 </template>
 
 <script setup>
+import { toRefs, defineProps } from 'vue'
 import {
   Field,
   Form,
   ErrorMessage
 } from '@/composables/demo1/items/item1/veeValidate.js'
+
+const props = defineProps(['idx'])
+const { idx } = toRefs(props)
 </script>
 
 <style lang='scss' scope>

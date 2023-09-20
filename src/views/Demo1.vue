@@ -22,7 +22,7 @@
         <Rules :rules="demo.rules" />
       </template>
       <!-- 每個驗證 demo 的元件 -->
-      <component :is="demo.component"></component>
+      <component :is="demo.component" :idx="idx+1"></component>
 
     </section>
 
@@ -38,6 +38,7 @@ import Item1 from '@/components/demo1/items/Item1.vue'
 import Item2 from '@/components/demo1/items/Item2.vue'
 import Item3 from '@/components/demo1/items/Item3.vue'
 import Item4 from '@/components/demo1/items/Item4.vue'
+import Item5 from '@/components/demo1/items/Item5.vue'
 
 const states = reactive([
   {
@@ -60,6 +61,12 @@ const states = reactive([
     content: '字段的數值必須在指定的最小值和最大值之間',
     rules: 'rules="between:1,10"',
     component: Item4
+  },
+  {
+    name: 'confirmed',
+    content: '字段必須與指定的確認字段的值相同，通常用於密碼確認',
+    rules: 'rules="confirmed:@password"',
+    component: Item5
   }
 ])
 
