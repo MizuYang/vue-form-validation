@@ -96,6 +96,12 @@ const data = reactive([
     content: '字段的值必須等於指定的值，使用嚴格相等（===）比較',
     placeholder: '請輸入:我同意',
     rules: 'rules="is:我同意"'
+  },
+  {
+    name: 'is_not',
+    content: '字段的值不能等於指定的值，使用嚴格相等（===）比較',
+    placeholder: '請輸入謝謝',
+    rules: 'rules="is_not:謝謝"'
   }
 ])
 
