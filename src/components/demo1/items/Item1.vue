@@ -3,15 +3,15 @@
     <Field
       class="form-control"
       id="item1"
-      name="email"
-      type="email"
-      rules="required|email"
-      placeholder="xxx@example.com"
+      name="輸入框"
+      type="text"
+      rules="alpha"
+      placeholder="請輸入英文字母"
     />
     <!-- 錯誤回饋 -->
     <i class="text-danger text-14 ps-1"
        :class="{'d-none':!Object.keys(errors).length}">
-      <ErrorMessage name="email"/>
+      <ErrorMessage name="輸入框"/>
     </i>
   </Form>
 </template>
