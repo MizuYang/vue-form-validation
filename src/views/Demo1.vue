@@ -84,6 +84,12 @@ const data = reactive([
     content: '字段的值不能在指定的值列表中',
     placeholder: '不能輸入 "你"、"我"、"他"',
     rules: 'rules="not_one_of:你,我,他"  |  rules="not_one_of:1,2,3"'
+  },
+  {
+    name: 'integer',
+    content: '字段的值必須是有效的整數，不接受指數表示法',
+    placeholder: '請輸入正整數',
+    rules: 'rules="integer"'
   }
 ])
 
