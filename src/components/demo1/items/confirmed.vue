@@ -33,7 +33,7 @@ import {
   Field,
   Form,
   ErrorMessage
-} from '@/composables/demo1/items/item1/veeValidate.js'
+} from '@/composables/demo1/items/confirmed/veeValidate.js'
 
 const props = defineProps(['idx', 'placeholder'])
 const { idx, placeholder } = toRefs(props)

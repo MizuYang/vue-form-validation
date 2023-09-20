@@ -5,7 +5,7 @@
       :id="`item${idx}`"
       name="輸入框"
       type="text"
-      rules="between:1,10"
+      rules="alpha_dash"
       :placeholder="placeholder"
     />
     <!-- 錯誤回饋 -->
@@ -22,7 +22,7 @@ import {
   Field,
   Form,
   ErrorMessage
-} from '@/composables/demo1/items/item1/veeValidate.js'
+} from '@/composables/demo1/items/alpha_dash/veeValidate.js'
 
 const props = defineProps(['idx', 'placeholder'])
 const { idx, placeholder } = toRefs(props)

@@ -71,8 +71,8 @@ const data = reactive([
 getComponents()
 
 function getComponents () {
-  data.forEach((item, idx) => {
-    item.component = defineAsyncComponent(() => (import(`../components/demo1/items/Item${idx + 1}.vue`)))
+  data.forEach(item => {
+    item.component = defineAsyncComponent(() => (import(`../components/demo1/items/${item.name}.vue`)))
   })
 }
 
