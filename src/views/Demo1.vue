@@ -181,6 +181,12 @@ const data = reactive([
     content: '上傳的文件的大小不能超過指定的大小（kb為單位）',
     discription: '只能上傳 ≦500 kb 的圖片',
     rules: 'rules="size:500"'
+  },
+  {
+    name: 'regex',
+    content: '字段的值必須與指定的正則表達式匹配。請注意，不建議在字符串格式的正則表達式中使用"|"或","，應該使用對象格式',
+    placeholder: '只能輸入數字、不得超過5個字元',
+    rules: ':rules="{ regex: /^[0-9]+$/,max:5 }"'
   }
 ])
 
