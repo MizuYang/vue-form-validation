@@ -80,6 +80,12 @@ const data = reactive([
     rules: 'rules="email"'
   },
   {
+    name: 'one_of',
+    content: '字段的值必須在指定的值列表中',
+    placeholder: '請輸入 喵',
+    rules: 'rules="one_of:喵"'
+  },
+  {
     name: 'not_one_of',
     content: '字段的值不能在指定的值列表中',
     placeholder: '不能輸入 "你"、"我"、"他"',
