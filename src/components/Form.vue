@@ -5,6 +5,7 @@
       name="email"
       type="email"
       placeHolder="示範局部匯入而已, 無驗證功能"
+      readonly
     />
     <ErrorMessage name="email"/>
   </Form>
