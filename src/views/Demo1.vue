@@ -75,8 +75,8 @@ const data = reactive([
   },
   {
     name: 'email',
-    content: '字段必須是數字，且具有指定數量的位數',
-    placeholder: '請輸入三個數字',
+    content: '字段必須是有效的電子郵件地址',
+    placeholder: '請輸入信箱帳號  例: example@example.com',
     rules: 'rules="email"'
   }
 ])
