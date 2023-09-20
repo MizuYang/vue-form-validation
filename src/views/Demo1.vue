@@ -65,6 +65,12 @@ const data = reactive([
     content: '字段必須與指定的確認字段的值相同，通常用於密碼確認',
     placeholder: '請輸入相同的密碼',
     rules: 'rules="confirmed:@password"'
+  },
+  {
+    name: 'digits',
+    content: '字段必須是數字，且具有指定數量的位數',
+    placeholder: '請輸入三個數字',
+    rules: 'rules="digits:3"'
   }
 ])
 
