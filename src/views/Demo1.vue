@@ -132,6 +132,12 @@ const data = reactive([
     content: '字段的數值不能小於指定的最小值 (數字的大小)',
     placeholder: '請輸入 ≧5 的數字',
     rules: 'rules="min_value:5"'
+  },
+  {
+    name: 'numeric',
+    content: '字段的值必須只包含數字',
+    placeholder: '請輸入數字',
+    rules: 'rules="numeric"'
   }
 ])
 
