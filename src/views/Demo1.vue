@@ -102,6 +102,12 @@ const data = reactive([
     content: '字段的值不能等於指定的值，使用嚴格相等（===）比較',
     placeholder: '請輸入謝謝',
     rules: 'rules="is_not:謝謝"'
+  },
+  {
+    name: 'length',
+    content: '字段的值必須具有指定的項目數，僅適用於可迭代的對象（如字符串或數組）',
+    placeholder: '請輸入五個字元',
+    rules: 'rules="length:5"'
   }
 ])
 
