@@ -30,6 +30,7 @@ import Form from '@/components/Form.vue'
 import Header from '@/components/Header.vue'
 import Item1 from '@/components/demo1/items/Item1.vue'
 import Item2 from '@/components/demo1/items/Item2.vue'
+import Item3 from '@/components/demo1/items/Item3.vue'
 
 const states = reactive([
   {
@@ -41,6 +42,11 @@ const states = reactive([
     name: 'alpha_dash',
     content: '字段可以包含字母字符、數字、破折號（-）或下劃線（_）',
     component: Item2
+  },
+  {
+    name: 'alpha_num',
+    content: '字段可以包含字母字符或數字',
+    component: Item3
   }
 ])
 
