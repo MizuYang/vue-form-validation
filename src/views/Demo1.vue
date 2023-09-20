@@ -24,6 +24,7 @@
       <!-- 每個驗證 demo 的元件 -->
       <component :is="demo.component"
                  :idx="idx+1"
+                 :discription="demo.discription"
                  :placeholder="demo.placeholder">
       </component>
     </section>
@@ -150,6 +151,12 @@ const data = reactive([
     content: '字段必須具有非空值',
     placeholder: '(必填) 請輸入填寫內容 rules="required"',
     rules: 'rules="required"  |  rules="numeric|required"'
+  },
+  {
+    name: 'dimensions',
+    content: '上傳的文件必須是圖像，且具有指定的精確尺寸（寬度和高度）',
+    discription: '請上傳 50*50 的圖片',
+    rules: 'rules="dimensions:50,50"'
   }
 ])
 
