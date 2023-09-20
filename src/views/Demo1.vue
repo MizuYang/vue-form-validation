@@ -175,6 +175,12 @@ const data = reactive([
     content: '上傳的文件的文件類型必須屬於指定的MIME類型之一',
     discription: '只能上傳 jpg、jpeg、png 的圖片',
     rules: 'rules="mimes:image/jpeg,image/png"'
+  },
+  {
+    name: 'size',
+    content: '上傳的文件的大小不能超過指定的大小（kb為單位）',
+    discription: '只能上傳 ≦500 kb 的圖片',
+    rules: 'rules="size:500"'
   }
 ])
 
