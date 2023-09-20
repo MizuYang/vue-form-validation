@@ -11,7 +11,7 @@
     </section>
 
     <section class="area mb-2 p-3"
-             v-for="(demo,idx) in states" :key="demo.name">
+             v-for="(demo,idx) in data" :key="demo.name">
       <!-- 標題 -->
       <Header :idx="idx+1"
               :name="demo.name"
@@ -33,50 +33,51 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, defineAsyncComponent } from 'vue'
 import Form from '@/components/Form.vue'
 import Header from '@/components/Header.vue'
 import Rules from '@/components/demo1/Rules.vue'
-import Item1 from '@/components/demo1/items/Item1.vue'
-import Item2 from '@/components/demo1/items/Item2.vue'
-import Item3 from '@/components/demo1/items/Item3.vue'
-import Item4 from '@/components/demo1/items/Item4.vue'
-import Item5 from '@/components/demo1/items/Item5.vue'
 
-const states = reactive([
+const data = reactive([
   {
     name: 'alpha',
     content: '字段只能包含字母字符',
-    placeholder: '請輸入英文字母',
-    component: Item1
+    placeholder: '請輸入英文字母'
   },
   {
     name: 'alpha_dash',
     content: '字段可以包含字母字符、數字、破折號（-）或下劃線（_）',
-    placeholder: '請輸入英文、數字、 - 、 _ 。例: 123-_-b',
-    component: Item2
+    placeholder: '請輸入英文、數字、 - 、 _ 。例: 123-_-b'
   },
   {
     name: 'alpha_num',
     content: '字段可以包含字母字符或數字',
-    placeholder: '請輸入英文或數字',
-    component: Item3
+    placeholder: '請輸入英文或數字'
   },
   {
     name: 'between',
     content: '字段的數值必須在指定的最小值和最大值之間',
     placeholder: '請輸入1-10的數字',
-    rules: 'rules="between:1,10"',
-    component: Item4
+    rules: 'rules="between:1,10"'
   },
   {
     name: 'confirmed',
     content: '字段必須與指定的確認字段的值相同，通常用於密碼確認',
     placeholder: '請輸入相同的密碼',
-    rules: 'rules="confirmed:@password"',
-    component: Item5
+    rules: 'rules="confirmed:@password"'
   }
 ])
+
+getComponents()
+
+function getComponents () {
+  const length = data.length
+  for (let i = 1; i < length; i++) {
+    data.forEach(item => {
+      item.component = defineAsyncComponent(() => (import(`../components/demo1/items/Item${i}.vue`)))
+    })
+  }
+}
 
 </script>
 <style lang='scss' scope>
