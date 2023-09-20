@@ -144,6 +144,12 @@ const data = reactive([
     content: '字段的值必須只包含數字',
     placeholder: '請輸入數字',
     rules: 'rules="numeric"'
+  },
+  {
+    name: 'required',
+    content: '字段必須具有非空值',
+    placeholder: '(必填) 請輸入填寫內容 rules="required"',
+    rules: 'rules="required"  |  rules="numeric|required"'
   }
 ])
 
