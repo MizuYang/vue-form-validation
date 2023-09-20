@@ -26,9 +26,7 @@
                  :idx="idx+1"
                  :placeholder="demo.placeholder">
       </component>
-
     </section>
-
   </main>
 </template>
 
@@ -42,17 +40,20 @@ const data = reactive([
   {
     name: 'alpha',
     content: '字段只能包含字母字符',
-    placeholder: '請輸入英文字母'
+    placeholder: '請輸入英文字母',
+    rules: 'rules="alpha"'
   },
   {
     name: 'alpha_dash',
     content: '字段可以包含字母字符、數字、破折號（-）或下劃線（_）',
-    placeholder: '請輸入英文、數字、 - 、 _ 。例: 123-_-b'
+    placeholder: '請輸入英文、數字、 - 、 _ 。例: 123-_-b',
+    rules: 'rules="alpha_dash"'
   },
   {
     name: 'alpha_num',
     content: '字段可以包含字母字符或數字',
-    placeholder: '請輸入英文或數字'
+    placeholder: '請輸入英文或數字',
+    rules: 'rules="alpha_num"'
   },
   {
     name: 'between',
@@ -71,6 +72,12 @@ const data = reactive([
     content: '字段必須是數字，且具有指定數量的位數',
     placeholder: '請輸入三個數字',
     rules: 'rules="digits:3"'
+  },
+  {
+    name: 'email',
+    content: '字段必須是數字，且具有指定數量的位數',
+    placeholder: '請輸入三個數字',
+    rules: 'rules="email"'
   }
 ])
 

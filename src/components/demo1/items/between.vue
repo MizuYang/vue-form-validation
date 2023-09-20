@@ -1,5 +1,5 @@
 <template>
-  <Form v-slot="{ errors }">
+  <Form v-slot="{ errors }" style="padding: 0 15px;">
     <Field
       class="form-control"
       :id="`item${idx}`"

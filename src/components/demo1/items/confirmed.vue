@@ -1,5 +1,5 @@
 <template>
-  <Form v-slot="{ errors }" class="mb-2">
+  <Form v-slot="{ errors }" style="padding: 0 15px;">
     <Field
       :id="`item${idx}`"
       name="password"
@@ -18,13 +18,13 @@
        :class="{'d-none':!Object.keys(errors).length}">
       <ErrorMessage name="輸入框"/>
     </i>
+    <button type="button"
+            class="btn mt-1 px-2 py-1"
+            :class="isPasswordShow?'btn-secondary':'btn-primary'"
+            @click="isPasswordShow=!isPasswordShow">
+      {{ isPasswordShow?'隱藏':'顯示' }}密碼
+    </button>
   </Form>
-  <button type="button"
-          class="btn px-2 py-1"
-          :class="isPasswordShow?'btn-secondary':'btn-primary'"
-          @click="isPasswordShow=!isPasswordShow">
-    {{ isPasswordShow?'隱藏':'顯示' }}密碼
-  </button>
 </template>
 
 <script setup>
