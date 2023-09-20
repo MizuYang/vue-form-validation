@@ -1,0 +1,29 @@
+<template>
+  <Form v-slot="{ errors }">
+    <Field
+      class="form-control"
+      id="item2"
+      name="輸入框"
+      type="text"
+      rules="alpha_dash"
+      placeholder="請輸入英文、數字、 - 、 _ 。例: 123-_-b"
+    />
+    <!-- 錯誤回饋 -->
+    <i class="text-danger text-14 ps-1"
+       :class="{'d-none':!Object.keys(errors).length}">
+      <ErrorMessage name="輸入框"/>
+    </i>
+  </Form>
+</template>
+
+<script setup>
+import {
+  Field,
+  Form,
+  ErrorMessage
+} from '@/composables/demo1/items/item1/veeValidate.js'
+</script>
+
+<style lang='scss' scope>
+
+</style>
