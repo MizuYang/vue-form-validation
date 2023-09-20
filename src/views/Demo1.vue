@@ -157,6 +157,12 @@ const data = reactive([
     content: '上傳的文件必須是圖像，且具有指定的精確尺寸（寬度和高度）',
     discription: '請上傳 50*50 的圖片',
     rules: 'rules="dimensions:50,50"'
+  },
+  {
+    name: 'ext',
+    content: '上傳的文件必須具有指定的文件擴展名',
+    discription: '請上傳 jpg 或 png 的圖片',
+    rules: 'rules="ext:jpg,png"'
   }
 ])
 
