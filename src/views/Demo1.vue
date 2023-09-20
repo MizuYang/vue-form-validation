@@ -78,6 +78,12 @@ const data = reactive([
     content: '字段必須是有效的電子郵件地址',
     placeholder: '請輸入信箱帳號  例: example@example.com',
     rules: 'rules="email"'
+  },
+  {
+    name: 'not_one_of',
+    content: '字段的值不能在指定的值列表中',
+    placeholder: '不能輸入 "你"、"我"、"他"',
+    rules: 'rules="not_one_of:你,我,他"  |  rules="not_one_of:1,2,3"'
   }
 ])
 
