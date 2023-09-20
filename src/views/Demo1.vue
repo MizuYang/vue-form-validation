@@ -90,6 +90,12 @@ const data = reactive([
     content: '字段的值必須是有效的整數，不接受指數表示法',
     placeholder: '請輸入正整數',
     rules: 'rules="integer"'
+  },
+  {
+    name: 'is',
+    content: '字段的值必須等於指定的值，使用嚴格相等（===）比較',
+    placeholder: '請輸入:我同意',
+    rules: 'rules="is:我同意"'
   }
 ])
 
