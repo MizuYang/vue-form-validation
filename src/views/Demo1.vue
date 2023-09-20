@@ -120,6 +120,12 @@ const data = reactive([
     content: '字段的數值不能大於指定的最大值 (數字的大小)',
     placeholder: '請輸入 ≦5 的數字',
     rules: 'rules="max_value:5"'
+  },
+  {
+    name: 'min',
+    content: '字段的值的長度不能少於指定的最小長度 (字元的長度)',
+    placeholder: '請輸入 ≧5 的字元',
+    rules: 'rules="min:5"'
   }
 ])
 
