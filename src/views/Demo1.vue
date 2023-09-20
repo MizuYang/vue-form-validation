@@ -108,6 +108,12 @@ const data = reactive([
     content: '字段的值必須具有指定的項目數，僅適用於可迭代的對象（如字符串或數組）',
     placeholder: '請輸入五個字元',
     rules: 'rules="length:5"'
+  },
+  {
+    name: 'max',
+    content: '字段的值的長度不能超過指定的最大長度 (字元的長度)',
+    placeholder: '請輸入五個以內的字元',
+    rules: 'rules="max:5"'
   }
 ])
 
