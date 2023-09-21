@@ -2,7 +2,7 @@
   <Form v-slot="{ errors }" class="mb-2" style="padding: 0 15px;">
     <Field
       class="form-control"
-      :id="`item${idx}`"
+      :id="`item${idx}`-1"
       name="輸入框1"
       type="text"
       rules="required"
@@ -15,7 +15,7 @@
     </i>
     <Field
       class="form-control"
-      :id="`item${idx}`"
+      :id="`item${idx}-2`"
       name="輸入框2"
       type="text"
       rules="numeric|required"
