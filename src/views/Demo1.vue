@@ -187,6 +187,10 @@ const data = reactive([
     content: '字段的值必須與指定的正則表達式匹配。請注意，不建議在字符串格式的正則表達式中使用"|"或","，應該使用對象格式',
     placeholder: '只能輸入數字、不得超過5個字元',
     rules: ':rules="{ regex: /^[0-9]+$/,max:5 }"'
+  },
+  {
+    name: 'resetForm',
+    content: '驗證、重置表單內容'
   }
 ])
 
