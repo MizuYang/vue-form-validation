@@ -191,6 +191,10 @@ const data = reactive([
   {
     name: 'resetForm',
     content: '驗證、重置表單內容'
+  },
+  {
+    name: 'initialErrors',
+    content: '自訂錯誤訊息 (手動錯誤處理)'
   }
 ])
 
