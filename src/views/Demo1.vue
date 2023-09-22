@@ -5,11 +5,6 @@
   </header>
 
   <main class="mb-5">
-    <section class="area mb-2 p-3">
-      <p>局部匯入</p>
-      <Form />
-    </section>
-
     <section class="area mb-2 p-3"
              v-for="(demo,idx) in data" :key="demo.name">
       <!-- 標題 -->
@@ -33,7 +28,6 @@
 
 <script setup>
 import { reactive, defineAsyncComponent } from 'vue'
-import Form from '@/components/Form.vue'
 import Header from '@/components/Header.vue'
 import Rules from '@/components/demo1/Rules.vue'
 
