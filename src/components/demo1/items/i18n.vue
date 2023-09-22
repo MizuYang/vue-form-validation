@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, onMounted } from 'vue'
 import {
   Field,
   Form,
@@ -82,7 +82,11 @@ configure({
 })
 setLocale('zh')
 
-validateHandle()
+onMounted(() => {
+  setTimeout(() => {
+    validateHandle()
+  }, 2000)
+})
 
 function validateHandle () {
   nextTick(() => {
