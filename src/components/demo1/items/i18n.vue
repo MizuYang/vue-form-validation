@@ -1,6 +1,6 @@
 <template>
-  <Form class="mx-3" v-slot="{ errors, validate }">
-    <Field name="信箱" label="信箱"
+  <VForm class="mx-3" v-slot="{ errors, validate }">
+    <VField name="信箱" label="信箱"
            class="form-control"
            :class="{ 'is-invalid': errors['信箱'] }"
            id="i18nInput"
@@ -20,18 +20,15 @@
         </button>
       </li>
     </ul>
-  </Form>
+  </VForm>
 </template>
 
 <script setup>
 import { ref, nextTick } from 'vue'
-import {
-  Field,
-  Form,
-  ErrorMessage
-} from '@/composables/demo1/items/ext/veeValidate.js'
 import { localize, setLocale } from '@vee-validate/i18n'
-import { configure } from 'vee-validate'
+import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+import en from '@vee-validate/i18n/dist/locale/en.json'
+import ja from '@vee-validate/i18n/dist/locale/ja.json'
 
 const validate = ref(null)
 const langBtn = ref({
@@ -43,42 +40,42 @@ const langBtn = ref({
     enName: 'zh',
     cnName: '中文'
   },
-  jp: {
-    enName: 'jp',
+  ja: {
+    enName: 'ja',
     cnName: '日文'
   }
 })
-const langData = {
-  en: {
-    信箱: {
-      required: 'The email is required',
-      email: 'Please enter your email address!'
-    }
-  },
-  zh: {
-    信箱: {
-      email: '請輸入信箱!',
-      required: '信箱是必填的選項!'
-    }
-  },
-  jp: {
-    信箱: {
-      email: 'あなたのメールアドレスを入力してください!',
-      required: '電子メールは必須オプションです!'
-    }
-  }
-}
 
-configure({
-  generateMessage: localize('zh', {
+localize({
+  zh: {
     fields: {
       信箱: {
-        email: '請輸入信箱!',
+        email: '請輸入信箱格式!',
         required: '信箱是必填的選項!'
       }
-    }
-  })
+    },
+    messages: zhTW.messages
+  },
+  ja: {
+    fields: {
+      信箱: {
+        email: 'あなたのメールアドレスを入力してください!',
+        required: '電子メールは必須オプションです!'
+      }
+    },
+    messages: ja.messages
+  },
+  en: {
+    fields: {
+      信箱: {
+        required: 'The email is required',
+        email: 'Please enter your email address!'
+      }
+    },
+    messages: en.messages
+  }
 })
+
 setLocale('zh')
 
 function validateHandle () {
@@ -87,15 +84,7 @@ function validateHandle () {
   })
 }
 function changeLang (lang) {
-  const fieldData = langData[lang]
-  configure({
-    generateMessage: localize(lang, {
-      fields: {
-        ...fieldData
-      }
-    })
-  })
-
+  setLocale(lang)
   validateHandle()
 }
 </script>
