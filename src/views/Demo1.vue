@@ -195,6 +195,10 @@ const data = reactive([
   {
     name: 'initialErrors',
     content: '自訂錯誤訊息 (手動錯誤處理)'
+  },
+  {
+    name: 'i18n',
+    content: '多國語系'
   }
 ])
 
