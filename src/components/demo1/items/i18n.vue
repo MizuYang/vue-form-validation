@@ -6,16 +6,12 @@
            id="i18nInput"
            rules="required|email" />
     <ErrorMessage name="信箱" class="invalid-feedback" />
-    <button type="button" class="btn btn-secondary me-2 px-2"
-            ref="validate" @click="validate">
-      驗證
-    </button>
 
     <!-- 切換語系 -->
     <ul class="d-flex align-items-center mt-2">
       <li v-for="{cnName,enName} in langBtn" :key="enName">
         <button type="button" class="btn btn-secondary me-2 px-2"
-                @click="changeLang(enName)">
+                @click="changeLang(enName, validate)">
           {{ cnName }}
         </button>
       </li>
@@ -24,13 +20,12 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref } from 'vue'
 import { localize, setLocale } from '@vee-validate/i18n'
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 import en from '@vee-validate/i18n/dist/locale/en.json'
 import ja from '@vee-validate/i18n/dist/locale/ja.json'
 
-const validate = ref(null)
 const langBtn = ref({
   en: {
     enName: 'en',
@@ -78,14 +73,9 @@ localize({
 
 setLocale('zh')
 
-function validateHandle () {
-  nextTick(() => {
-    validate.value.click()
-  })
-}
-function changeLang (lang) {
+function changeLang (lang, validate) {
   setLocale(lang)
-  validateHandle()
+  validate()
 }
 </script>
 
