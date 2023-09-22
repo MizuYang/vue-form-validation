@@ -1,9 +1,11 @@
 <template>
-  <Form v-slot="{ setFieldError, setErrors }" @submit="onSubmit">
-    <Field name="email" />
+  <Form v-slot="{ setFieldError, setErrors }"
+        class="mx-3"
+        @submit="onSubmit">
+    <Field class="form-control" name="email" id="email" />
     <ErrorMessage name="email" />
     <br />
-    <Field name="password" />
+    <Field class="form-control" name="password" id="password" />
     <ErrorMessage name="password" />
     <br />
     <div class="d-flex align-items-center mb-3">
@@ -17,8 +19,15 @@
         設定多個錯誤回饋
       </button>
     </div>
-    <button class="btn btn-sm btn-secondary px-2">
-      actions.setFieldError、actions.setErrors 設定錯誤回饋
+    <div class="d-flex align-items-center mb-3">
+      <h3>使用 actions.setFieldError、actions.setErrors 設定錯誤回饋：</h3>
+      <button class="btn btn-sm btn-secondary px-2">
+        設定錯誤
+      </button>
+    </div>
+
+    <button type="button" class="btn btn-secondary d-block mx-auto px-2 py-1" @click="clearFeedback">
+      清除回饋
     </button>
   </Form>
 </template>
@@ -38,5 +47,13 @@ function onSubmit (values, actions) {
     // email: '該信箱已被使用!',
     password: '有人已經擁有該密碼'
   })
+}
+function clearFeedback () {
+  const email = document.querySelector('#email')
+  const password = document.querySelector('#password')
+  email.focus()
+  email.blur()
+  password.focus()
+  password.blur()
 }
 </script>
