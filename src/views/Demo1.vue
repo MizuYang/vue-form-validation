@@ -199,13 +199,13 @@ const data = reactive([
   {
     name: 'i18n',
     content: '多國語系'
-  },
-  {
-    name: 'ToastError',
-    content: '將錯誤顯示在 Toast 上',
-    placeholder: '',
-    rules: ''
   }
+  // {
+  //   name: 'ToastError',
+  //   content: '將錯誤顯示在 Toast 上',
+  //   placeholder: '',
+  //   rules: ''
+  // }
 ])
 
 getComponents()

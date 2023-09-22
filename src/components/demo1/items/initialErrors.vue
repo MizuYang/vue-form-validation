@@ -1,11 +1,11 @@
 <template>
-  <Form v-slot="{ setFieldError, setErrors }"
+  <VForm v-slot="{ setFieldError, setErrors }"
         class="mx-3"
         @submit="onSubmit">
-    <Field class="form-control" name="email" id="email" />
+    <VField class="form-control" name="email" id="email" />
     <ErrorMessage name="email" />
     <br />
-    <Field class="form-control" name="password" id="password" />
+    <VField class="form-control" name="password" id="password" />
     <ErrorMessage name="password" />
     <br />
     <div class="d-flex align-items-center mb-3">
@@ -29,15 +29,10 @@
     <button type="button" class="btn btn-secondary d-block mx-auto px-2 py-1" @click="clearFeedback">
       清除回饋
     </button>
-  </Form>
+  </VForm>
 </template>
 
 <script setup>
-import {
-  Field,
-  Form,
-  ErrorMessage
-} from '@/composables/demo1/items/regex/veeValidate.js'
 
 function onSubmit (values, actions) {
   // 設定一個錯誤

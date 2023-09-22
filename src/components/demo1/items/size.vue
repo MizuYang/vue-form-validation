@@ -1,7 +1,7 @@
 <template>
-  <Form v-slot="{ errors }" class="mb-2" style="padding: 0 15px;">
+  <VForm v-slot="{ errors }" class="mb-2" style="padding: 0 15px;">
     <label :for="`item${idx}`" class="mb-1">{{ discription }}</label>
-    <Field
+    <VField
       class="form-control"
       :id="`item${idx}`"
       name="輸入框"
@@ -13,16 +13,11 @@
        :class="{'d-none':!Object.keys(errors).length}">
       <ErrorMessage name="輸入框"/>
     </i>
-  </Form>
+  </VForm>
 </template>
 
 <script setup>
 import { toRefs, defineProps } from 'vue'
-import {
-  Field,
-  Form,
-  ErrorMessage
-} from '@/composables/demo1/items/size/veeValidate.js'
 
 const props = defineProps(['idx', 'discription'])
 const { idx, discription } = toRefs(props)

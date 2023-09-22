@@ -1,6 +1,6 @@
 <template>
-  <Form>
-    <Field
+  <VForm>
+    <VField
       class="form-control"
       name="email"
       type="email"
@@ -8,15 +8,10 @@
       readonly
     />
     <ErrorMessage name="email"/>
-  </Form>
+  </VForm>
 </template>
 
 <script setup>
-import {
-  Field,
-  Form,
-  ErrorMessage
-} from '@/composables/demo1/plugins/veeValidate.js'
 </script>
 
 <style lang='scss' scope>
