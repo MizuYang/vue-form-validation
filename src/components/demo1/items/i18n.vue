@@ -7,7 +7,6 @@
            rules="required|email" />
     <ErrorMessage name="信箱" class="invalid-feedback" />
     <button type="button" class="btn btn-secondary me-2 px-2"
-            v-show="false"
             ref="validate" @click="validate">
       驗證
     </button>
@@ -25,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, nextTick, onMounted } from 'vue'
+import { ref, nextTick } from 'vue'
 import {
   Field,
   Form,
@@ -81,12 +80,6 @@ configure({
   })
 })
 setLocale('zh')
-
-onMounted(() => {
-  setTimeout(() => {
-    validateHandle()
-  }, 2000)
-})
 
 function validateHandle () {
   nextTick(() => {
