@@ -4,7 +4,9 @@
     <ul class="d-flex">
       <li v-for="item in routerLink" :key="item.name"
           class="me-2">
-        <RouterLink :to="item.path">
+        <RouterLink :to="item.path"
+                    class="text-dark btn-hover p-2"
+                    active-class="active">
           {{ item.name }}
         </RouterLink>
       </li>
@@ -32,4 +34,16 @@ const routerLink = reactive([
 
 <style lang="scss">
 @import "@/assets/stylesheets/all.scss";
+</style>
+
+<style lang="scss" scoped>
+.active {
+  color: #fff !important;
+  background-color: rgb(152 147 236);
+
+}
+.btn-hover:hover {
+  color: #fff !important;
+  background-color: rgb(179 176 226);
+}
 </style>
