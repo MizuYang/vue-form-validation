@@ -3,8 +3,8 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    name: 'demo1',
-    component: () => import('@/views/Demo1.vue')
+    name: 'veeValidate',
+    component: () => import('@/views/VeeValidate.vue')
   }
   // { //* 代表所有主頁面下的頁面，路由錯誤都會被導向
   //   path: '/:pathMatch(.*)*',
