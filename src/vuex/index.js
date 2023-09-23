@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 
 // 其它store
 import test from '@/vuex/store/test.js'
+import veeValidate from '@/vuex/store/veeValidate.js'
 
 export default createStore({
   strict: false, // 嚴謹模式
@@ -24,6 +25,7 @@ export default createStore({
   getters: {
   },
   modules: {
-    test
+    test,
+    veeValidate
   }
 })
