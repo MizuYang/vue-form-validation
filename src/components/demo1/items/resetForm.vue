@@ -189,20 +189,20 @@ const form = reactive({
 })
 
 function reset (resetForm) {
-  form.drinkRadio = ''
-  form.drinkCheckbox = []
-  form.drinkSelect = ''
-  form.textareaValue = ''
-  form.textValue = ''
-  form.files = ''
-  const uploadInput = document.querySelector('#檔案上傳')
-  uploadInput.value = ''
+  formInit()
   setTimeout(() => {
     resetForm()
   })
 }
 function onSubmit (values, { resetForm }) {
   console.log(values)
+  formInit()
+  setTimeout(() => {
+    resetForm()
+  })
+}
+// 表單元素初始化
+function formInit () {
   form.drinkRadio = ''
   form.drinkCheckbox = []
   form.drinkSelect = ''
@@ -211,9 +211,6 @@ function onSubmit (values, { resetForm }) {
   form.files = ''
   const uploadInput = document.querySelector('#檔案上傳')
   uploadInput.value = ''
-  setTimeout(() => {
-    resetForm()
-  })
 }
 </script>
 
