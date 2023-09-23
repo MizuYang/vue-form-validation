@@ -29,7 +29,7 @@
 <script setup>
 import { reactive, defineAsyncComponent } from 'vue'
 import Header from '@/components/Header.vue'
-import Rules from '@/components/demo1/Rules.vue'
+import Rules from '@/components/veeValidate/Rules.vue'
 
 const data = reactive([
   {
@@ -204,7 +204,7 @@ getComponents()
 
 function getComponents () {
   data.forEach(item => {
-    item.component = defineAsyncComponent(() => (import(`../components/demo1/items/${item.name}.vue`)))
+    item.component = defineAsyncComponent(() => (import(`../components/veeValidate/items/${item.name}.vue`)))
   })
 }
 
