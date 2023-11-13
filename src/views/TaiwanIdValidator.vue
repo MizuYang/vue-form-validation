@@ -38,17 +38,6 @@
           手動驗證
         </label>
       </div>
-
-      <template v-if="validateEventName==='手動驗證'">
-        <div class="position-fixed ms-5"
-             style="right:20px;bottom:50px;">
-          <button type="button"
-                  class="btn btn-primary rounded-pill p-3"
-                  @click="validate">
-            驗證
-          </button>
-        </div>
-      </template>
     </div>
   </header>
 
@@ -61,6 +50,14 @@
                  :item="item"
                  :validateEvent="validateEvent"
                  @validateRules="validateRules"></component>
+
+      <!-- 驗證失敗提示 -->
+      <template v-if="item.feedback">
+        <p class="area text-danger p-3 pt-0">
+          {{ item.feedback }}
+        </p>
+      </template>
+
       <!-- 提供測試用資料 -->
       <p class="area p-3 pt-0">
         試試：{{ item.testString.join('、 ') }}...等
@@ -68,10 +65,24 @@
     </div>
 
   </form>
+
+  <!-- 手動驗證 -->
+  <template v-if="validateEventName==='手動驗證'">
+    <div class="position-fixed ms-5"
+          style="right:20px;bottom:50px;">
+      <button type="button"
+              class="btn btn-primary rounded-pill"
+              style="padding: 30px 10px!important;"
+              @click="validate">
+        手動驗證
+      </button>
+    </div>
+  </template>
 </template>
 
 <script setup>
 import { ref, reactive, computed, defineAsyncComponent } from 'vue'
+import { useStore } from 'vuex'
 import {
   isGuiNumberValid, // 統一編號
   isNationalIdentificationNumberValid, // 身分證字號
@@ -83,6 +94,10 @@ import {
   isEInvoiceDonateCodeValid, // 捐贈碼
   isCreditCardNumberValid // 信用卡
 } from 'taiwan-id-validator'
+
+// store
+const store = useStore()
+const { dispatch } = store
 
 // data
 const validateEventName = ref('一輸入就驗證')
@@ -217,22 +232,36 @@ function validateRules (e, ruleName) {
   const rule = data.filter(item => item.name === ruleName)[0].rule
 
   // 更新 data 驗證的結果
-  data.forEach(item => {
-    if (item.name === ruleName) item.isValid = rule(value) ? 1 : 2
+  data.forEach(async item => {
+    if (item.name === ruleName) {
+      const isValid = rule(value)
+
+      if (isValid) {
+        item.isValid = 1
+        item.feedback = ''
+      } else {
+        item.isValid = 2
+        item.feedback = await dispatch('taiwanIdValidator/getFeedback', ['zh', ruleName])
+      }
+    }
   })
 }
 function validate () {
-  data.forEach(item => {
+  data.forEach(async item => {
     const ruleName = item.name
     const value = form[ruleName]
+    const rule = item.rule
+    const isValid = rule(value)
 
     if (value) {
-      const rule = item.rule
-      const isValid = rule(value)
-
       item.isValid = isValid ? 1 : 2
     } else {
       item.isValid = 2
+    }
+    if (isValid) {
+      item.feedback = ''
+    } else {
+      item.feedback = await dispatch('taiwanIdValidator/getFeedback', ['zh', ruleName])
     }
   })
 }

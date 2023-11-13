@@ -4,6 +4,7 @@ import { createStore } from 'vuex'
 // 其它store
 import test from '@/vuex/store/test.js'
 import veeValidate from '@/vuex/store/veeValidate.js'
+import taiwanIdValidator from '@/vuex/store/taiwanIdValidator.js'
 
 export default createStore({
   strict: false, // 嚴謹模式
@@ -26,6 +27,7 @@ export default createStore({
   },
   modules: {
     test,
-    veeValidate
+    veeValidate,
+    taiwanIdValidator
   }
 })
