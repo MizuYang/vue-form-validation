@@ -115,7 +115,7 @@ const data = reactive([
     rule: isResidentCertificateNumberValid,
     // vModel: 居留證編號,
     placeHolder: '請輸入 居留證編號',
-    testString: ['', '', '']
+    testString: ['A984102515', 'A870725624', 'A816976896']
   },
   {
     name: '新式居留證編號',
@@ -125,7 +125,7 @@ const data = reactive([
     rule: isNewResidentCertificateNumberValid,
     // vModel: 新式居留證編號,
     placeHolder: '請輸入 新式居留證編號',
-    testString: ['', '', '']
+    testString: ['A984102515', 'A870725624', 'A816976896']
   },
   {
     name: '舊式居留證編號',
@@ -135,7 +135,7 @@ const data = reactive([
     rule: isOriginalResidentCertificateNumberValid,
     // vModel: 舊式居留證編號,
     placeHolder: '請輸入 舊式居留證編號',
-    testString: ['', '', '']
+    testString: ['AA77455441', 'AC78562850', 'AA67427382']
   },
   {
     name: '自然人憑證',
@@ -145,7 +145,7 @@ const data = reactive([
     rule: isCitizenDigitalCertificateNumberValid,
     // vModel: 自然人憑證,
     placeHolder: '請輸入 自然人憑證',
-    testString: ['', '', '']
+    testString: ['AA12345678901234']
   },
   {
     name: '手機條碼',
@@ -155,7 +155,7 @@ const data = reactive([
     rule: isEInvoiceCellPhoneBarcodeValid,
     // vModel: 手機條碼,
     placeHolder: '請輸入 手機條碼',
-    testString: ['', '', '']
+    testString: ['/DBS1234']
   },
   {
     name: '捐贈碼',
@@ -165,7 +165,7 @@ const data = reactive([
     rule: isEInvoiceDonateCodeValid,
     // vModel: 捐贈碼,
     placeHolder: '請輸入 捐贈碼',
-    testString: ['', '', '']
+    testString: ['001']
   },
   {
     name: '信用卡',
@@ -175,7 +175,7 @@ const data = reactive([
     rule: isCreditCardNumberValid,
     // vModel: 信用卡,
     placeHolder: '請輸入 信用卡',
-    testString: ['', '', '']
+    testString: ['5105105105105100']
   }
 ])
 const form = reactive({
