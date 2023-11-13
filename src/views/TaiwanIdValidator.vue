@@ -43,12 +43,17 @@
 
   <form class="mt-3">
     <!-- 每個demo區塊 -->
-    <div v-for="item in data" :key="item.name">
+    <div class="area p-3"
+         v-for="item in data" :key="item.name">
       <component :is="item.component"
                  v-model="item.vModel"
                  :item="item"
-                 :validateEventName="validateEventName"
+                 :validateEvent="validateEvent"
                  @validateRules="validateRules"></component>
+      <!-- 提供測試用資料 -->
+      <p class="area p-3">
+        試試：{{ item.testString.join('、 ') }}...等
+      </p>
     </div>
 
     <button type="button" @click="validate">
@@ -58,7 +63,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, defineAsyncComponent } from 'vue'
+import { ref, reactive, computed, defineAsyncComponent } from 'vue'
 import {
   isGuiNumberValid, // 統一編號
   isNationalIdentificationNumberValid, // 身分證字號
@@ -177,6 +182,16 @@ const form = reactive({
   信用卡: ref('')
 })
 getComponent()
+
+// computed
+const validateEvent = computed(() => {
+  let event = ''
+  if (validateEventName.value === '一輸入就驗證') event = 'input'
+  else if (validateEventName.value === '離開焦點才驗證') event = 'change'
+  else if (validateEventName.value === '手動驗證') event = 'input'
+
+  return event
+})
 
 function getComponent () {
   data.forEach(item => {
