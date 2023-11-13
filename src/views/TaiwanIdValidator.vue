@@ -38,6 +38,17 @@
           手動驗證
         </label>
       </div>
+
+      <template v-if="validateEventName==='手動驗證'">
+        <div class="position-fixed ms-5"
+             style="right:20px;bottom:50px;">
+          <button type="button"
+                  class="btn btn-primary rounded-pill p-3"
+                  @click="validate">
+            驗證
+          </button>
+        </div>
+      </template>
     </div>
   </header>
 
@@ -51,14 +62,11 @@
                  :validateEvent="validateEvent"
                  @validateRules="validateRules"></component>
       <!-- 提供測試用資料 -->
-      <p class="area p-3">
+      <p class="area p-3 pt-0">
         試試：{{ item.testString.join('、 ') }}...等
       </p>
     </div>
 
-    <button type="button" @click="validate">
-      驗證
-    </button>
   </form>
 </template>
 
@@ -97,7 +105,7 @@ const data = reactive([
     rule: isNationalIdentificationNumberValid,
     // vModel: 身分證字號,
     placeHolder: '請輸入 身分證字號',
-    testString: []
+    testString: ['A125573934', 'A250985499', 'A250772885']
   },
   {
     name: '居留證編號',
@@ -107,7 +115,7 @@ const data = reactive([
     rule: isResidentCertificateNumberValid,
     // vModel: 居留證編號,
     placeHolder: '請輸入 居留證編號',
-    testString: []
+    testString: ['', '', '']
   },
   {
     name: '新式居留證編號',
@@ -117,7 +125,7 @@ const data = reactive([
     rule: isNewResidentCertificateNumberValid,
     // vModel: 新式居留證編號,
     placeHolder: '請輸入 新式居留證編號',
-    testString: []
+    testString: ['', '', '']
   },
   {
     name: '舊式居留證編號',
@@ -127,7 +135,7 @@ const data = reactive([
     rule: isOriginalResidentCertificateNumberValid,
     // vModel: 舊式居留證編號,
     placeHolder: '請輸入 舊式居留證編號',
-    testString: []
+    testString: ['', '', '']
   },
   {
     name: '自然人憑證',
@@ -137,7 +145,7 @@ const data = reactive([
     rule: isCitizenDigitalCertificateNumberValid,
     // vModel: 自然人憑證,
     placeHolder: '請輸入 自然人憑證',
-    testString: []
+    testString: ['', '', '']
   },
   {
     name: '手機條碼',
@@ -147,7 +155,7 @@ const data = reactive([
     rule: isEInvoiceCellPhoneBarcodeValid,
     // vModel: 手機條碼,
     placeHolder: '請輸入 手機條碼',
-    testString: []
+    testString: ['', '', '']
   },
   {
     name: '捐贈碼',
@@ -157,7 +165,7 @@ const data = reactive([
     rule: isEInvoiceDonateCodeValid,
     // vModel: 捐贈碼,
     placeHolder: '請輸入 捐贈碼',
-    testString: []
+    testString: ['', '', '']
   },
   {
     name: '信用卡',
@@ -167,7 +175,7 @@ const data = reactive([
     rule: isCreditCardNumberValid,
     // vModel: 信用卡,
     placeHolder: '請輸入 信用卡',
-    testString: []
+    testString: ['', '', '']
   }
 ])
 const form = reactive({
@@ -199,8 +207,6 @@ function getComponent () {
   })
 }
 function validateRules (e, ruleName) {
-  console.log(e.target.value)
-
   const value = e.target.value
 
   // 更新表單欄位的值
