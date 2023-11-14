@@ -9,18 +9,17 @@
       </a>
     </h2>
 
-     <!-- 設定配置 -->
-    <div class="d-flex my-3">
-      <div class="form-check">
-        <label for="一輸入就驗證" class="form-check-label">
-          <input type="radio" name="validateEventName"
-                class="form-check-input" id="一輸入就驗證"
-                value="一輸入就驗證"
-                v-model="validateEventName">
-          一輸入就驗證
-        </label>
-      </div>
-      <div class="form-check mx-3">
+     <!-- 驗證時機配置 -->
+    <div class="d-flex align-items-center my-3">
+      <h3 class="me-3">驗證時機：</h3>
+      <label for="一輸入就驗證" class="form-check-label">
+        <input type="radio" name="validateEventName"
+              class="form-check-input" id="一輸入就驗證"
+              value="一輸入就驗證"
+              v-model="validateEventName">
+        一輸入就驗證
+      </label>
+      <div class="mx-3">
         <label for="離開焦點才驗證" class="form-check-label">
           <input type="radio" name="validateEventName"
                 class="form-check-input" id="離開焦點才驗證"
@@ -29,19 +28,48 @@
           離開焦點才驗證
         </label>
       </div>
-      <div class="form-check">
-        <label for="手動驗證" class="form-check-label">
-          <input type="radio" name="validateEventName"
-                class="form-check-input" id="手動驗證"
-                value="手動驗證"
-                v-model="validateEventName">
-          手動驗證
+      <label for="手動驗證" class="form-check-label">
+        <input type="radio" name="validateEventName"
+              class="form-check-input" id="手動驗證"
+              value="手動驗證"
+              v-model="validateEventName">
+        手動驗證
+      </label>
+    </div>
+
+    <!-- 語系配置 -->
+    <div class="d-flex align-items-center my-3">
+      <h3 class="me-3">多國語系：</h3>
+      <label for="中文" class="form-check-label">
+        <input type="radio" name="validateLanguage"
+              class="form-check-input" id="中文"
+              value="zh"
+              v-model="validateLanguage"
+              @change="changeValidateLang">
+        中文
+      </label>
+      <div class="mx-3">
+        <label for="英文" class="form-check-label">
+          <input type="radio" name="validateLanguage"
+                class="form-check-input" id="英文"
+                value="en"
+                v-model="validateLanguage"
+                @change="changeValidateLang">
+          英文
         </label>
       </div>
+      <label for="日文" class="form-check-label">
+        <input type="radio" name="validateLanguage"
+              class="form-check-input" id="日文"
+              value="ja"
+              v-model="validateLanguage"
+              @change="changeValidateLang">
+        日文
+      </label>
     </div>
   </header>
 
-  <form class="mt-3">
+  <form class="mt-3 pb-4">
     <!-- 每個demo區塊 -->
     <div class="area p-3"
          v-for="item in data" :key="item.name">
@@ -63,7 +91,6 @@
         試試：{{ item.testString.join('、 ') }}...等
       </p>
     </div>
-
   </form>
 
   <!-- 手動驗證 -->
@@ -101,6 +128,8 @@ const { dispatch } = store
 
 // data
 const validateEventName = ref('一輸入就驗證')
+const validateLanguage = ref('zh')
+const isValidate = ref(false) // 判斷開始驗證了
 const data = reactive([
   {
     name: '統一編號',
@@ -229,6 +258,8 @@ function validateRules (e, ruleName) {
 
   if (validateEventName.value === '手動驗證') return
 
+  isValidate.value = true
+
   const rule = data.filter(item => item.name === ruleName)[0].rule
 
   // 更新 data 驗證的結果
@@ -241,12 +272,14 @@ function validateRules (e, ruleName) {
         item.feedback = ''
       } else {
         item.isValid = 2
-        item.feedback = await dispatch('taiwanIdValidator/getFeedback', ['zh', ruleName])
+        item.feedback = await dispatch('taiwanIdValidator/getFeedback', [validateLanguage.value, ruleName])
       }
     }
   })
 }
 function validate () {
+  isValidate.value = true
+
   data.forEach(async item => {
     const ruleName = item.name
     const value = form[ruleName]
@@ -261,7 +294,15 @@ function validate () {
     if (isValid) {
       item.feedback = ''
     } else {
-      item.feedback = await dispatch('taiwanIdValidator/getFeedback', ['zh', ruleName])
+      item.feedback = await dispatch('taiwanIdValidator/getFeedback', [validateLanguage.value, ruleName])
+    }
+  })
+}
+// 切換語系: 將驗證失敗的欄位 feedback 更換語系
+function changeValidateLang () {
+  data.forEach(async item => {
+    if (item.isValid === 2) {
+      item.feedback = await dispatch('taiwanIdValidator/getFeedback', [validateLanguage.value, item.name])
     }
   })
 }
