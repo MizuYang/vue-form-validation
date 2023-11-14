@@ -14,7 +14,7 @@
   </nav>
 
   <main class="container p-3">
-    <router-view />
+    <RouterView />
   </main>
 </template>
 
@@ -26,7 +26,7 @@ const routerLink = reactive([
     name: 'VeeValidate'
   },
   {
-    path: '/TaiwanIdValidator',
+    path: '/taiwanIdValidator',
     name: 'TaiwanIdValidator'
   }
 ])

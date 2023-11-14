@@ -5,6 +5,11 @@ const routes = [
     path: '/',
     name: 'veeValidate',
     component: () => import('@/views/VeeValidate.vue')
+  },
+  {
+    path: '/taiwanIdValidator',
+    name: 'taiwanIdValidator',
+    component: () => import('@/views/TaiwanIdValidator.vue')
   }
   // { //* 代表所有主頁面下的頁面，路由錯誤都會被導向
   //   path: '/:pathMatch(.*)*',

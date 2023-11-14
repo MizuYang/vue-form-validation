@@ -30,7 +30,7 @@ export function isPhone (value) {
 export function isCat (value) {
   // 取得當前語系
   const language = store.state.veeValidate.currentLanguage
-  const msg = feedback[language].isPhone
+  const msg = feedback[language].isCat
   console.log(language, msg)
   const string = /喵/
   return string.test(value) ? true : msg
