@@ -1,3 +1,5 @@
+<a href="https://mizuyang.github.io/vue-form-validation/#/" target="_blank">Demo頁面</a>
+
 表單驗證
  - VeeValidate
     - 驗證類型
